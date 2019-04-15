@@ -62,12 +62,14 @@ if __name__ == "__main__":
     parser.add_argument('-m', dest='mesh_ipv4',
                         metavar='<mesh_ipv4>',
                         help='mesh ipv4 address')
+    parser.add_argument('-B', dest='batadv_bridge', metavar='<iface>',
+                        help='batman-adv bridge')
     args = parser.parse_args()
 
     socketserver.ThreadingUDPServer.address_family = socket.AF_INET6
     server = socketserver.ThreadingUDPServer(
         ("", args.port),
-        get_handler(get_providers(args.directory), {'batadv_dev': args.batadv_iface, 'mesh_ipv4': args.mesh_ipv4})
+        get_handler(get_providers(args.directory), {'batadv_dev': args.batadv_iface, 'mesh_ipv4': args.mesh_ipv4, 'batadv_bridge': args.batadv_bridge})
     )
 
     if args.mcast_ifaces:
