@@ -48,8 +48,8 @@ if __name__ == "__main__":
                         default=1001, type=int, metavar='<port>',
                         help='port number to listen on (default 1001)')
     parser.add_argument('-g', dest='group',
-                        default='ff02::2:1001', metavar='<group>',
-                        help='multicast group (default ff02::2:1001)')
+                        default='ff05::2:1001', metavar='<group>',
+                        help='multicast group (default ff05::2:1001)')
     parser.add_argument('-i', dest='mcast_ifaces',
                         action='append', metavar='<iface>',
                         help='interface on which the group is joined')
